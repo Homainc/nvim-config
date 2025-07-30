@@ -2,9 +2,9 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-require('config.lazy')
+require("config.lazy")
 
-vim.g.python3_host_prog = '/Users/pilkha/.pyenv/versions/nvim-env/bin/python'
+vim.g.python3_host_prog = "/Users/pilkha/.pyenv/versions/nvim-env/bin/python"
 
 -- Mappings
 vim.keymap.set("i", "jk", "<Esc>", { noremap = true })
@@ -21,13 +21,15 @@ vim.opt.expandtab = true
 vim.opt.signcolumn = "yes:1"
 vim.opt.shiftwidth = 4
 vim.opt.colorcolumn = "79"
-vim.cmd.colorscheme "catppuccin-macchiato"
+vim.cmd.colorscheme("catppuccin-mocha") --"catppuccin-macchiato"
 vim.diagnostic.config({
-    update_in_insert = true
+	update_in_insert = true,
 })
+vim.opt.diffopt:append("vertical")
+vim.opt.diffopt:append("context:9999")
 
 -- Folding
--- Cheatsheet: https://gist.github.com/lestoni/8c74da455cce3d36eb68 
+-- Cheatsheet: https://gist.github.com/lestoni/8c74da455cce3d36eb68
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()" --  treesitter as source of truth for folding
 vim.opt.foldcolumn = "0"

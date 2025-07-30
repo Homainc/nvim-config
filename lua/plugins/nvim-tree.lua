@@ -6,6 +6,7 @@ return {
 	"nvim-tree/nvim-web-devicons",
     },
     opts = {
+        hijack_cursor = true,
         sort = {
             sorter = "case_sensitive",
         },
@@ -14,9 +15,18 @@ return {
         },
         renderer = {
             group_empty = true,
+            highlight_diagnostics = 'all',
         },
         filters = {
             dotfiles = true,
         },
+        diagnostics = {
+            enable = true,
+            show_on_dirs = true,
+            severity = {
+                min = vim.diagnostic.severity.ERROR,
+                max = vim.diagnostic.severity.ERROR,
+            },
+        }
     },
 }
