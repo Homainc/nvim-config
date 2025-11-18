@@ -1,15 +1,18 @@
 return {
+        {
+        	"mason-org/mason.nvim",
+		version = "^1.0.0",
+		lazy = false,
+		opts = {
+                    log_level = vim.log.levels.DEBUG
+                },
+	},
 	{
-		"williamboman/mason-lspconfig.nvim",
+		"mason-org/mason-lspconfig.nvim",
 		version = "^1.0.0",
 		lazy = false,
 		dependencies = {
-			{
-				"williamboman/mason.nvim",
-				version = "^1.0.0",
-				lazy = false,
-				opts = {},
-			},
+			"mason-org/mason.nvim",
 			"neovim/nvim-lspconfig",
 		},
 		opts = {
@@ -22,9 +25,13 @@ return {
 				"prettier",
 				"clangd",
 				"stylua",
-			},
+                                "omnisharp"
+			}
 		},
-		config = function()
+		config = function(_, opts)
+                        require("mason").setup()
+                        require("mason-lspconfig").setup(opts)
+
 			local lspconfig = require("lspconfig")
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			capabilities =
@@ -142,6 +149,9 @@ return {
 					end,
 				},
 			})
+                        lspconfig.omnisharp.setup({
+                            capabilities = capabilities
+                        })
 		end,
 	},
 }

@@ -12,6 +12,7 @@ return {
 			xml = { "prettier" },
 			css = { "prettier" },
 			markdown = { "prettier" },
+                        csharp = { "omnisharp" },
 		},
 		format_on_save = {},
 	},
