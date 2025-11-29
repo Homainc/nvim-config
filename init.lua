@@ -10,9 +10,25 @@ vim.g.python3_host_prog = "/Users/pilkha/.pyenv/versions/nvim-env/bin/python"
 vim.keymap.set("i", "jk", "<Esc>", { noremap = true })
 vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { noremap = true })
 vim.keymap.set("n", "<leader>D", vim.lsp.buf.declaration, { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>d", vim.lsp.buf.definition, { noremap = true, silent = true })
+--vim.keymap.set("n", "<leader>d", vim.lsp.buf.definition, { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>d", function()
+	local ok = pcall(require("omnisharp_extended").lsp_definition)
+	if not ok then
+		vim.notify("Cannot open definition (probably metadata file)", vim.log.levels.WARN)
+	end
+end, { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>i", vim.diagnostic.open_float, { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>fu", vim.lsp.buf.references, { noremap = true, silent = true })
+-- copy
+vim.keymap.set("v", "<leader>y", '"+y', { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>Y", '"+yg_', { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>y", '"+y', { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>yy", '"+yy', { noremap = true, silent = true })
+-- paste
+vim.keymap.set("n", "<leader>p", '"+p', { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>P", '"+P', { noremap = true, silent = true })
+vim.keymap.set("v", "<leader>p", '"+p', { noremap = true, silent = true })
+vim.keymap.set("v", "<leader>P", '"+P', { noremap = true, silent = true })
 
 -- Options
 vim.opt.number = true
