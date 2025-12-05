@@ -14,6 +14,7 @@ return {
 			markdown = { "prettier" },
 			cs = { "csharpier" },
 			csproj = { "csharpier" },
+			cpp = { "clang-format" },
 		},
 		format_on_save = {},
 	},
